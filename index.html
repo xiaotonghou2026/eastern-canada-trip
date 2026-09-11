@@ -1,0 +1,1001 @@
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>2026 加东自驾行程｜Toronto · Niagara · Huntsville</title>
+<meta name="description" content="2026年9月29日至10月4日，4位成人，从温哥华往返的多伦多、尼亚加拉瀑布、Huntsville/Muskoka轻松自驾行程。" />
+<style>
+  :root{
+    --bg:#f6f2ea;
+    --paper:#fffdf8;
+    --ink:#2f382f;
+    --muted:#6f786d;
+    --sage:#7d927d;
+    --sage-dark:#536a58;
+    --clay:#b8755d;
+    --ochre:#c89b57;
+    --line:#ddd7cb;
+    --soft:#ece7dc;
+    --shadow:0 10px 28px rgba(61,68,57,.09);
+    --radius:20px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.6;
+  }
+  a{color:inherit}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  .wrap{width:min(1180px,92vw);margin:auto}
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,242,234,.9);backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(221,215,203,.8);
+  }
+  .topbar .inner{
+    min-height:62px;display:flex;align-items:center;gap:12px;justify-content:space-between;
+  }
+  .brand{font-weight:800;letter-spacing:.02em}
+  .nav{display:flex;gap:8px;flex-wrap:wrap}
+  .nav a,.btn{
+    border:1px solid var(--line);background:var(--paper);text-decoration:none;
+    border-radius:999px;padding:8px 13px;font-size:14px;cursor:pointer;
+  }
+  .btn:hover,.nav a:hover{border-color:#bcb5a8;transform:translateY(-1px)}
+  .btn.primary{background:var(--sage-dark);color:white;border-color:var(--sage-dark)}
+  .hero{
+    padding:56px 0 30px;
+    display:grid;grid-template-columns:1.12fr .88fr;gap:26px;align-items:stretch;
+  }
+  .hero-copy{
+    background:linear-gradient(145deg,#f2ece2,#fffdf8);
+    border:1px solid var(--line);border-radius:28px;padding:38px;box-shadow:var(--shadow);
+  }
+  .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);font-weight:800}
+  h1{font-size:clamp(34px,5vw,64px);line-height:1.04;margin:12px 0 18px;letter-spacing:-.035em}
+  .lede{font-size:18px;color:var(--muted);max-width:720px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+  .chip{font-size:13px;background:#e8eee6;color:#516356;border-radius:999px;padding:7px 11px}
+  .hero-img{border-radius:28px;overflow:hidden;min-height:360px;box-shadow:var(--shadow);position:relative}
+  .hero-img .credit,.photo-credit{
+    position:absolute;right:8px;bottom:8px;background:rgba(25,30,25,.65);color:#fff;
+    padding:4px 7px;border-radius:8px;font-size:10px;text-decoration:none
+  }
+  .hero-img::after{
+    content:"Toronto → Niagara → Muskoka";
+    position:absolute;left:18px;bottom:18px;background:rgba(255,253,248,.88);backdrop-filter:blur(5px);
+    padding:10px 14px;border-radius:14px;font-weight:800
+  }
+
+  .section{padding:28px 0}
+  .section-title{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:16px}
+  .section-title h2{margin:0;font-size:28px}
+  .section-title p{margin:0;color:var(--muted)}
+  .panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+  /* route map */
+  .route-panel{padding:26px;overflow:hidden}
+  .route-head{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:18px}
+  .route-head small{color:var(--muted)}
+  .route-svg{width:100%;height:auto;min-height:220px}
+  .route-node{cursor:pointer;transition:.2s}
+  .route-node:hover{transform:translateY(-3px)}
+  .route-legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .route-legend span{font-size:12px;color:var(--muted)}
+
+  /* lodging */
+  .lodging-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .lodging-card{padding:22px}
+  .lodging-card h3{margin:0 0 8px}
+  .field{margin-top:16px}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+  .field input{
+    width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;
+    font:inherit;color:var(--ink)
+  }
+  .zone-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+  .zone-btn{
+    border:1px solid var(--line);background:#faf7f0;border-radius:999px;padding:7px 10px;cursor:pointer;font-size:13px
+  }
+  .zone-btn.active{background:#e7eee5;border-color:#bdcbbb;color:#435447}
+  .zone-copy{font-size:14px;color:var(--muted);min-height:74px}
+  .tiny{font-size:12px;color:var(--muted)}
+
+  /* day navigation */
+  .day-nav{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}
+  .day-pill{
+    text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px;text-align:center;
+    box-shadow:0 5px 14px rgba(61,68,57,.05)
+  }
+  .day-pill b{display:block}
+  .day-pill small{color:var(--muted)}
+  .day-pill:hover{border-color:#bfb8aa}
+
+  .day{margin-top:18px;overflow:hidden}
+  .day-header{
+    padding:22px 24px;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;
+    border-bottom:1px solid var(--line);background:#fbf8f2
+  }
+  .day-num{
+    width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--sage-dark);color:white;
+    font-size:20px;font-weight:900
+  }
+  .day-header h3{margin:0;font-size:23px}
+  .day-header p{margin:3px 0 0;color:var(--muted)}
+  .drive-badge{background:#efe9dc;border-radius:999px;padding:7px 11px;font-size:13px;white-space:nowrap}
+  .day-body{padding:22px}
+  .timeline{display:grid;gap:14px}
+  .item{
+    display:grid;grid-template-columns:110px 190px 1fr;gap:16px;
+    padding:14px;border:1px solid var(--line);border-radius:16px;background:#fff;
+  }
+  .time{font-weight:800;color:var(--sage-dark);padding-top:5px}
+  .photo{
+    height:130px;border-radius:13px;overflow:hidden;background:#e9e4da;position:relative
+  }
+  .info h4{margin:0 0 6px;font-size:18px}
+  .info p{margin:0 0 9px;color:var(--muted);font-size:14px}
+  .actions{display:flex;gap:8px;flex-wrap:wrap}
+  .link-btn{
+    display:inline-flex;align-items:center;gap:5px;text-decoration:none;border:1px solid var(--line);
+    border-radius:999px;padding:6px 9px;font-size:12px;background:#faf7f1
+  }
+  .checkrow{display:flex;gap:8px;align-items:center;margin-top:8px;font-size:13px}
+  .checkrow input{width:16px;height:16px;accent-color:var(--sage-dark)}
+  .optional{
+    display:none;margin-top:10px;padding:10px 12px;border-left:3px solid var(--ochre);background:#fbf6ea;border-radius:8px;
+    font-size:13px;color:#665e4d
+  }
+  .optional.show{display:block}
+  .day-note{margin-top:14px;padding:13px 15px;background:#f0f4ee;border-radius:13px;color:#536257;font-size:14px}
+  .warn{background:#f8eee9;color:#7b5344}
+
+
+  .item.no-photo{grid-template-columns:110px 1fr}
+  .item.no-photo .info{grid-column:2}
+  .transfer{
+    display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:center;
+    margin:-4px 0;padding:4px 14px;
+  }
+  .transfer .spacer{height:1px}
+  .transfer-box{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 13px;border-radius:13px;background:#f1eee7;border:1px dashed #cec6b8;
+    color:#5f685d;font-size:13px
+  }
+  .transfer-box strong{color:#3f4d42}
+  .live-route{
+    text-decoration:none;border:1px solid #cfc7b8;background:#fffdf8;border-radius:999px;
+    padding:6px 9px;font-size:12px;white-space:nowrap
+  }
+  .route-flow{
+    display:grid;grid-template-columns:repeat(6,minmax(120px,1fr));gap:10px;align-items:stretch;
+    margin-top:18px
+  }
+  .route-step{
+    position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 12px;
+    min-height:108px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 5px 14px rgba(61,68,57,.05)
+  }
+  .route-step b{font-size:15px}
+  .route-step small{color:var(--muted);margin-top:3px}
+  .route-step .daytag{
+    display:inline-block;width:max-content;font-size:11px;padding:3px 7px;border-radius:999px;
+    background:#eef2eb;color:#536a58;margin-bottom:8px
+  }
+  .route-arrow{
+    display:flex;align-items:center;justify-content:center;gap:6px;color:#6f786d;font-size:12px;text-align:center;
+    grid-column:span 1
+  }
+  .route-arrow .timepill{
+    background:#fbf8f2;border:1px solid var(--line);border-radius:999px;padding:5px 8px;line-height:1.25
+  }
+
+
+  .plan-note{
+    margin-top:8px;display:inline-block;padding:5px 9px;border-radius:999px;
+    background:#edf2ea;color:#526455;font-size:12px;font-weight:700
+  }
+
+  /* mini stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 0}
+  .stat{padding:16px;text-align:center}
+  .stat strong{display:block;font-size:25px}
+  .stat span{font-size:12px;color:var(--muted)}
+
+  .source-list{display:grid;gap:7px;font-size:13px;color:var(--muted)}
+  .source-list a{text-underline-offset:3px}
+  footer{padding:30px 0 60px;color:var(--muted);font-size:12px}
+
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr}
+    .hero-img{min-height:260px}
+    .lodging-grid{grid-template-columns:1fr}
+    .day-nav{grid-template-columns:repeat(3,1fr)}
+    .item{grid-template-columns:92px 150px 1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:650px){
+    .topbar .inner{align-items:flex-start;padding:10px 0}
+    .nav{display:none}
+    .hero{padding-top:24px}
+    .hero-copy{padding:26px}
+    .section-title{display:block}
+    .day-nav{grid-template-columns:repeat(2,1fr)}
+    .day-header{grid-template-columns:auto 1fr}
+    .drive-badge{grid-column:1/-1;width:max-content}
+    .item,.item.no-photo{grid-template-columns:1fr}
+    .item.no-photo .info{grid-column:auto}
+    .time{padding:0}
+    .photo{height:210px}
+    .transfer{grid-template-columns:1fr;padding:3px 0}
+    .transfer .spacer{display:none}
+    .route-flow{grid-template-columns:1fr}
+    .route-arrow{min-height:46px}
+
+  }
+  @media print{
+    .topbar,.actions,.checkrow,.zone-tabs,.btn{display:none!important}
+    body{background:white}
+    .panel,.day,.hero-copy{box-shadow:none}
+    .day{break-inside:avoid}
+    .photo{height:110px}
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap inner">
+    <div class="brand">🍁 2026 加东轻松自驾</div>
+    <nav class="nav">
+      <a href="#route">路线</a>
+      <a href="#stay">住宿</a>
+      <a href="#days">每日行程</a>
+      <a href="#sources">出发前检查</a>
+    </nav>
+    <button class="btn" onclick="window.print()">打印 / 保存 PDF</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">SEP 29 — OCT 4 · 4 ADULTS</div>
+      <h1>Toronto · Niagara · Huntsville</h1>
+      <p class="lede">不赶路版本：落地多伦多直接租车，市区住得更宽松；看一次尼亚加拉瀑布，再去 Muskoka/Huntsville 过两晚秋天。Algonquin 不强行加入，红叶好看就留在 Huntsville 慢慢玩。</p>
+      <div class="chips">
+        <span class="chip">🚗 全程一辆车</span>
+        <span class="chip">🏙 Toronto 3晚</span>
+        <span class="chip">🌊 Niagara 1日</span>
+        <span class="chip">🎃 Huntsville 2晚 · 不赶路</span>
+        <span class="chip">🍁 红叶优先</span>
+      </div>
+      <div class="stats">
+        <div class="panel stat"><strong>6天</strong><span>9/29–10/4</span></div>
+        <div class="panel stat"><strong>5晚</strong><span>3晚 Toronto + 2晚 Huntsville</span></div>
+        <div class="panel stat"><strong>≈ 8–10h</strong><span>全程累计主要驾驶</span></div>
+        <div class="panel stat"><strong>1天</strong><span>真正长一点的公路日</span></div>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Toronto_Skyline_Summer_2020.jpg" alt="Toronto skyline with CN Tower">
+      <a class="credit" href="https://commons.wikimedia.org/wiki/File:Toronto_Skyline_Summer_2020.jpg" target="_blank" rel="noopener">Photo: Aaron Davis / Wikimedia Commons</a>
+    </div>
+  </section>
+
+  <section class="section" id="route">
+    <div class="section-title">
+      <div><h2>一眼看懂路线</h2><p>点击地点可以直接跳到对应日程；车程是正常路况下的粗略值。</p></div>
+    </div>
+    <div class="panel route-panel">
+      <div class="route-head">
+        <div><b>多伦多机场 → 多伦多住宿 → 尼亚加拉大瀑布 → 多伦多住宿 → Huntsville → 多伦多机场</b><br><small>Toronto 高峰期可能明显更慢，实际以当天 Google Maps 为准。</small></div>
+        <button class="btn primary" onclick="openMasterRoute()">在 Google Maps 打开总路线</button>
+      </div>
+      
+      <div class="route-flow" aria-label="行程路线图">
+        <div class="route-step">
+          <span class="daytag">D1 · 9/29</span>
+          <b>多伦多机场 YYZ</b>
+          <small>落地取车</small>
+        </div>
+        <div class="route-arrow"><span>→</span><span class="timepill">计划约 20–40 分钟*<br>视住宿位置与落地时段</span><span>→</span></div>
+        <div class="route-step">
+          <span class="daytag">D1–D4</span>
+          <b>多伦多住宿</b>
+          <small>建议西侧 / DT外围，停车更友好</small>
+        </div>
+        <div class="route-arrow"><span>→</span><span class="timepill">D3 早上计划约 1.5–2 小时*</span><span>→</span></div>
+        <div class="route-step">
+          <span class="daytag">D3 · 10/1</span>
+          <b>尼亚加拉大瀑布</b>
+          <small>当天往返多伦多</small>
+        </div>
+        <div class="route-arrow"><span>↩</span><span class="timepill">傍晚返回多伦多<br>计划约 1.5–2.5 小时*</span></div>
+
+        <div class="route-step">
+          <span class="daytag">D4 · 10/2</span>
+          <b>多伦多出发</b>
+          <small>早上退房后北上</small>
+        </div>
+        <div class="route-arrow"><span>→</span><span class="timepill">计划约 2.5–3 小时*</span><span>→</span></div>
+        <div class="route-step">
+          <span class="daytag">D4–D6</span>
+          <b>Huntsville</b>
+          <small>D4 南瓜节 · D5 红叶慢游</small>
+        </div>
+        <div class="route-arrow"><span>→</span><span class="timepill">计划约 2.5–3 小时*</span><span>→</span></div>
+        <div class="route-step">
+          <span class="daytag">D6 · 10/4</span>
+          <b>多伦多机场 YYZ</b>
+          <small>加油 → 还车 → 回温哥华</small>
+        </div>
+        <div class="route-arrow"><span>✈</span><span class="timepill">飞回 Vancouver</span></div>
+      </div>
+
+      <div class="route-legend">
+        <span>* 路线图里的车程是按你们旅行当天预计出发时段做的计划值，不采用“此刻”的实时路况。</span>
+        <span>· 你现在在国内查看时，多伦多可能正值凌晨，因此 Google Maps 当前耗时通常会偏短；真正出发前再点每段的“当前路况”。</span>
+        <span>· 住宿若选 Mimico / Humber Bay / High Park / Etobicoke，去 Niagara 往往比住 Downtown Core 更顺。</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="stay">
+    <div class="section-title">
+      <div><h2>住宿策略</h2><p>你们有车、4个成人，我会把“面积 + 停车 + 价格”放在“必须住核心 Downtown”前面。</p></div>
+    </div>
+    <div class="lodging-grid">
+      <div class="panel lodging-card">
+        <h3>Toronto｜9/29–10/2</h3>
+        <div class="zone-tabs">
+          <button class="zone-btn active" data-zone="mimico">Mimico / Humber Bay</button>
+          <button class="zone-btn" data-zone="highpark">High Park / Junction</button>
+          <button class="zone-btn" data-zone="etobicoke">Etobicoke / Islington</button>
+        </div>
+        <div id="zoneCopy" class="zone-copy">我最优先看这里：湖边、新公寓较多，通常比核心 Downtown 更容易找到大一点的房子和停车位；去 Niagara 也顺。进市中心可开车，也可看住宿离 Mimico GO 是否方便。</div>
+        <div class="field">
+          <label>订好后，把 Toronto 住宿地址填这里（自动保存在本浏览器）</label>
+          <input id="torontoBase" placeholder="例如：Mimico / Humber Bay Shores 的 Airbnb 地址">
+        </div>
+        <p class="tiny">筛选建议：4 guests · 2 bedrooms 优先 · free parking · rating 4.8+ · recent reviews · free cancellation。</p>
+      </div>
+
+      <div class="panel lodging-card">
+        <h3>Huntsville｜10/2–10/4</h3>
+        <p class="zone-copy">不用追求住在“景区”。优先 Huntsville Downtown / Fairy Lake 周围，吃饭方便，去 Lion’s Lookout、Sandhill、Kawartha Dairy 都很近；第二天看红叶也更松弛。</p>
+        <div class="field">
+          <label>订好后，把 Huntsville 住宿地址填这里</label>
+          <input id="huntsvilleBase" placeholder="Huntsville 住宿地址（待定）">
+        </div>
+        <p class="tiny">如果房子本身有湖景/树林景观，可以直接把 10/3 做成“睡醒看红叶”的度假日。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="days">
+    <div class="section-title">
+      <div><h2>每日行程</h2><p>页面里的时间按你们实际旅行日的预计出发时段做“计划估算”；“Google Maps 当前路况”只代表你打开网页当下的交通，不代表 10 月出发当天。</p></div>
+      <button class="btn" onclick="resetChecks()">清空勾选</button>
+    </div>
+
+    <div class="day-nav">
+      <a class="day-pill" href="#d1"><b>D1 · 9/29</b><small>落地 / 取车</small></a>
+      <a class="day-pill" href="#d2"><b>D2 · 9/30</b><small>Toronto</small></a>
+      <a class="day-pill" href="#d3"><b>D3 · 10/1</b><small>Niagara</small></a>
+      <a class="day-pill" href="#d4"><b>D4 · 10/2</b><small>南瓜节</small></a>
+      <a class="day-pill" href="#d5"><b>D5 · 10/3</b><small>Huntsville 红叶</small></a>
+      <a class="day-pill" href="#d6"><b>D6 · 10/4</b><small>还车 / 回温哥华</small></a>
+    </div>
+    <div class="day-note" style="margin-top:12px">
+      新节奏：<b>10/2 只做“长途开车 + 午饭 + Sandhill”</b>；<b>10/3 才慢慢玩 Huntsville</b>。这样即使堵车、排队或四个人出门慢一点，也不会破坏整天。
+    </div>
+
+    <!-- D1 -->
+    <article class="panel day" id="d1">
+      <div class="day-header">
+        <div class="day-num">D1</div>
+        <div><h3>9/29 周二｜Vancouver → Toronto</h3><p>落地就取车，但第一天不塞景点。</p></div>
+        <div class="drive-badge">🚗 YYZ → 住宿约 20–35 min*</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="item no-photo">
+            <div class="time">抵达后</div>
+            <div class="info">
+              <h4>YYZ 取车 → Toronto 住宿</h4>
+              <p>同一辆车一直开到 10/4，再回 YYZ 还车。建议优先选允许第二驾驶人的方案。这里的计划时间按你们预计白天出发时段估算；当天再点 Google Maps 看实时路况。</p>
+              <div class="actions">
+                <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=Toronto+Pearson+International+Airport" target="_blank">📍 YYZ</a>
+                <button class="link-btn" onclick="openDynamicLeg('yyz','toronto','driving')">🧭 Google Maps 当前路况</button>
+              </div>
+              <label class="checkrow"><input type="checkbox" data-check="d1-car"> 已取车 / 已确认第二驾驶人</label>
+            </div>
+          </div>
+          <div class="item">
+            <div class="time">晚上</div>
+            <div class="photo">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Toronto_Skyline_Summer_2020.jpg" alt="Toronto waterfront">
+              <a class="photo-credit" target="_blank" href="https://commons.wikimedia.org/wiki/File:Toronto_Skyline_Summer_2020.jpg">Wikimedia</a>
+            </div>
+            <div class="info">
+              <h4>只安排晚饭 + 休息</h4>
+              <p>西部飞东部有 3 小时时差，第一晚不要硬打卡。若精神好，再去附近湖边或社区简单散步。</p>
+              <label class="checkrow"><input type="checkbox" data-check="d1-rest"> 已完成入住 / 补给</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- D2 -->
+    <article class="panel day" id="d2">
+      <div class="day-header">
+        <div class="day-num">D2</div>
+        <div><h3>9/30 周三｜Toronto 城市日</h3><p>这一天反而不建议一直开车进 Downtown Core。</p></div>
+        <div class="drive-badge">🚇 建议 TTC / GO + 步行</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="item">
+            <div class="time">10:00</div>
+            <div class="photo">
+              <img src="https://cdn.ventrata.com/image/upload/s--l8onTpFu--/v1762324782/Urban-Adventures-Canada-Toronto-St-Lawrence-Market-exterior-IMG_7423-1920_jjkgwk.jpg" alt="St Lawrence Market">
+              <span class="photo-credit">St. Lawrence Market</span>
+            </div>
+            <div class="info">
+              <h4>St. Lawrence Market</h4>
+              <p>先吃、先逛，适合作为市区日的起点。不要排太满，留 1–1.5 小时即可。</p>
+              <div class="actions">
+                <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=St+Lawrence+Market+Toronto" target="_blank">📍 Google Maps</a>
+              </div>
+              <label class="checkrow"><input type="checkbox" data-check="d2-market"> 完成</label>
+            </div>
+          </div>
+
+          <div class="transfer">
+            <div class="spacer"></div>
+            <div class="transfer-box">
+              <span>🚶 <strong>St. Lawrence Market → Distillery District：建议步行，约 15–20 分钟</strong></span>
+              <button class="live-route" onclick="openNamedLeg('St Lawrence Market Toronto','Distillery Historic District Toronto','walking')">Google Maps 当前路况</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="time">11:45</div>
+            <div class="photo">
+              <img src="https://media.circuitcdn.com/seneca/images/image002.width-1280.format-jpeg.jpg" alt="Distillery District">
+              <span class="photo-credit">Distillery District</span>
+            </div>
+            <div class="info">
+              <h4>Distillery District</h4>
+              <p>红砖老厂区、咖啡馆、小店，主要是散步和拍照。和 St. Lawrence 连在同一个上午最顺。</p>
+              <div class="actions">
+                <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=Distillery+Historic+District+Toronto" target="_blank">📍 Google Maps</a>
+              </div>
+              <label class="checkrow"><input type="checkbox" data-check="d2-distillery"> 完成</label>
+            </div>
+          </div>
+
+          <div class="transfer">
+            <div class="spacer"></div>
+            <div class="transfer-box">
+              <span>🚇 <strong>Distillery District → CN Tower：建议 TTC / 打车，通常约 15–25 分钟</strong></span>
+              <button class="live-route" onclick="openNamedLeg('Distillery Historic District Toronto','CN Tower Toronto','transit')">Google Maps 当前路况</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="time">15:00</div>
+            <div class="photo">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Toronto_Skyline_Summer_2020.jpg" alt="CN Tower">
+              <a class="photo-credit" target="_blank" href="https://commons.wikimedia.org/wiki/File:Toronto_Skyline_Summer_2020.jpg">Wikimedia</a>
+            </div>
+            <div class="info">
+              <h4>CN Tower + Harbourfront</h4>
+              <p>二选一思路：想看城市全景就上塔；如果更想慢慢逛，就只在 Harbourfront / 湖边走走。</p>
+              <div class="actions">
+                <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=CN+Tower+Toronto" target="_blank">📍 CN Tower</a>
+                <button class="link-btn" onclick="toggleOptional(this)">＋看备选</button>
+              </div>
+              <div class="optional">备选：Ripley’s Aquarium。如果四个成年人兴趣一般，就不必为了“都到了”硬塞进去。</div>
+              <label class="checkrow"><input type="checkbox" data-check="d2-cn"> 完成</label>
+            </div>
+          </div>
+        </div>
+        <div class="day-note">住宿如果在 Mimico/Humber Bay：可以优先研究 GO 进 Union；High Park/Junction 则 TTC 更方便。市区日车留住宿处，省掉停车和堵车焦虑。</div>
+      </div>
+    </article>
+
+    <!-- D3 -->
+    <article class="panel day" id="d3">
+      <div class="day-header">
+        <div class="day-num">D3</div>
+        <div><h3>10/1 周四｜Niagara Falls 一日游</h3><p>瀑布是主角，Niagara-on-the-Lake 作为“有余力再加”。</p></div>
+        <div class="drive-badge">🚗 单程约 1.5–2 h*</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="item no-photo">
+            <div class="time">08:00</div>
+            <div class="info">
+              <h4>Toronto 住宿 → Niagara Falls</h4>
+              <p>尽量早出发，避开多伦多通勤高峰。若住在西边，路线会比从核心 Downtown 出发更舒服。</p>
+              <span class="plan-note">计划车程：约 1小时30分–2小时（10/1 约 08:00 出发）</span>
+              <div class="actions">
+                <button class="link-btn" onclick="openDynamicLeg('toronto','Table Rock Welcome Centre, Niagara Falls, Ontario','driving')">🧭 开始导航</button>
+              </div>
+              <label class="checkrow"><input type="checkbox" data-check="d3-drive"> 已出发</label>
+            </div>
+          </div>
+
+          <div class="transfer">
+            <div class="spacer"></div>
+            <div class="transfer-box">
+              <span>🚗 <strong>住宿 → 大瀑布：🚗 计划约 1小时30分–2小时（按 10/1 早上约 8:00 出发估算）</strong></span>
+              <button class="live-route" onclick="openDynamicLeg('toronto','Table Rock Welcome Centre, Niagara Falls, Ontario','driving')">Google Maps 当前路况</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="time">10:00</div>
+            <div class="photo">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Horseshoe_Falls%2C_Niagara%2C_Ontario%2C_Canada.jpg" alt="Niagara Horseshoe Falls">
+              <a class="photo-credit" target="_blank" href="https://commons.wikimedia.org/wiki/File:Horseshoe_Falls,_Niagara,_Ontario,_Canada.jpg">CC0 / Wikimedia</a>
+            </div>
+            <div class="info">
+              <h4>Horseshoe Falls / Table Rock</h4>
+              <p>先从最经典的加拿大侧看瀑布；拍照、走步道，不急着立刻排项目。</p>
+              <div class="actions">
+                <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=Table+Rock+Welcome+Centre+Niagara+Falls" target="_blank">📍 Google Maps</a>
+              </div>
+              <label class="checkrow"><input type="checkbox" data-check="d3-falls"> 完成</label>
+            </div>
+          </div>
+
+          <div class="transfer">
+            <div class="spacer"></div>
+            <div class="transfer-box">
+              <span>🚶 <strong>Table Rock → Niagara City Cruises：建议沿瀑布步行 / WEGO，步行约 25–30 分钟</strong></span>
+              <button class="live-route" onclick="openNamedLeg('Table Rock Welcome Centre Niagara Falls','Niagara City Cruises','walking')">Google Maps 当前路况</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="time">11:30</div>
+            <div class="photo">
+              <img src="https://www.cliftonhill.com/falls_blog/wp-content/uploads/2019/04/Hornblower-Niagara-Cruises-Visual-Assets-X-Public-X-2017-Signature-Images-X-Web-Ready-03-1366x905.jpg" alt="Niagara City Cruises boat">
+              <span class="photo-credit">Niagara boat tour</span>
+            </div>
+            <div class="info">
+              <h4>Niagara City Cruises（推荐）</h4>
+              <p>真正“贴近瀑布”的体验。建议把它当作当天唯一必付费的大项目。</p>
+              <div class="actions">
+                <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=Niagara+City+Cruises" target="_blank">📍 Google Maps</a>
+                <button class="link-btn" onclick="toggleOptional(this)">＋看备选</button>
+              </div>
+              <div class="optional">如果不想坐船，可改 Journey Behind the Falls；两个都做也可以，但当天就会更满。</div>
+              <label class="checkrow"><input type="checkbox" data-check="d3-boat"> 完成</label>
+            </div>
+          </div>
+
+          <div class="transfer">
+            <div class="spacer"></div>
+            <div class="transfer-box">
+              <span>🚗 <strong>Niagara City Cruises → Niagara-on-the-Lake：如果去，建议开车，约 25–30 分钟</strong></span>
+              <button class="live-route" onclick="openNamedLeg('Niagara City Cruises','Queen Street Niagara-on-the-Lake Ontario','driving')">Google Maps 当前路况</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="time">15:30</div>
+            <div class="photo">
+              <img src="https://d33wubrfki0l68.cloudfront.net/f49b1e9a26ebd59e9b826f642ef703a39befb3f7/6cc21/img/canada-62.jpg" alt="Niagara on the Lake">
+              <span class="photo-credit">Niagara-on-the-Lake</span>
+            </div>
+            <div class="info">
+              <h4>Niagara-on-the-Lake（可选）</h4>
+              <p>如果瀑布玩完不累，再开约 25–30 分钟去小镇吃饭、走 Queen Street；如果已经累，直接回 Toronto。</p>
+              <div class="actions">
+                <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=Queen+Street+Niagara-on-the-Lake+Ontario" target="_blank">📍 Google Maps</a>
+              </div>
+              <label class="checkrow"><input type="checkbox" data-check="d3-notl"> 去了就勾</label>
+            </div>
+          </div>
+        </div>
+        <div class="day-note warn">Toronto 进出城的堵车波动很大，导航显示比这里长很多时，宁可删掉 Niagara-on-the-Lake，也不要把晚上回程搞得很累。</div>
+      </div>
+    </article>
+
+    <!-- D4 -->
+    
+    <article class="panel day" id="d4">
+      <div class="day-header">
+        <div class="day-num">D4</div>
+        <div><h3>10/2 周五｜Toronto → Huntsville · 南瓜节日</h3><p>这一天不追求“多打卡”：开车、好好吃午饭，再把下午完整留给 Sandhill。</p></div>
+        <div class="drive-badge">🚗 计划约 2.5–3 h*</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+
+          <div class="item no-photo">
+            <div class="time">08:30</div>
+            <div class="info">
+              <h4>Toronto 住宿 → Huntsville</h4>
+              <p>9点前出发最舒服。四个人退房、装行李后直接北上，不在路上再塞景点。</p>
+              <span class="plan-note">计划车程：约 2小时30分–3小时（10/2 约 08:30 出发）</span>
+              <div class="actions">
+                <button class="link-btn" onclick="openDynamicLeg('toronto','huntsville','driving')">🧭 Google Maps 当前路况</button>
+              </div>
+              <label class="checkrow"><input type="checkbox" data-check="d4-drive"> 已出发</label>
+            </div>
+          </div>
+
+          <div class="transfer">
+            <div class="spacer"></div>
+            <div class="transfer-box">
+              <span>🚗 <strong>Toronto → Huntsville：这段就是当天主要驾驶，不再中途安排正式活动</strong></span>
+              <button class="live-route" onclick="openDynamicLeg('toronto','huntsville','driving')">Google Maps 当前路况</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="time">11:45–13:15</div>
+            <div class="photo">
+              <img src="https://images.squarespace-cdn.com/content/v1/66fab472298236604e0b542b/6bdc2024-d3c0-4156-8352-09e2bbfde10a/Portuguese-House.jpg" alt="Portuguese House Huntsville">
+              <span class="photo-credit">Portuguese House</span>
+            </div>
+            <div class="info">
+              <h4>Portuguese House 午饭</h4>
+              <p>把午饭当成真正的休息时间，不赶着吃完就走。到得稍晚也没关系，整体顺延即可。</p>
+              <div class="actions">
+                <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=Portuguese+House+21+West+Street+South+Huntsville+Ontario" target="_blank">📍 Google Maps</a>
+              </div>
+              <label class="checkrow"><input type="checkbox" data-check="d4-food"> 完成</label>
+            </div>
+          </div>
+
+          <div class="transfer">
+            <div class="spacer"></div>
+            <div class="transfer-box">
+              <span>🚗 <strong>Portuguese House → Sandhill Nursery：建议开车，约 15–20 分钟</strong></span>
+              <button class="live-route" onclick="openNamedLeg('Portuguese House Huntsville Ontario','Sandhill Nursery Huntsville Ontario','driving')">Google Maps 当前路况</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="time">14:00–17:00</div>
+            <div class="photo">
+              <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fit%2Cw_800%2Ch_600/crm/muskokaon/sandhill-nursery-8_44AE7F9D-0DA6-CC64-0838A0618BB731AA-44ae7cf5d3ffb77_44ae883a-b8fe-30a9-7284b95174244f34.jpg" alt="Sandhill Nursery">
+              <span class="photo-credit">Sandhill Nursery</span>
+            </div>
+            <div class="info">
+              <h4>Sandhill Nursery Fall Festival 🎃</h4>
+              <p>把下午完整留给这里：南瓜布景、秋季装饰、迷宫、拍照区。你们是周五，白天免费且通常比周末松弛。</p>
+              <div class="actions">
+                <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=Sandhill+Nursery+1686+Aspdin+Road+Huntsville+Ontario" target="_blank">📍 Google Maps</a>
+                <button class="link-btn" onclick="toggleOptional(this)">＋晚上还有什么</button>
+              </div>
+              <div class="optional">如果当天精神很好，可临时加 Fall Forest of Light；如果下午已经拍够、逛够，就直接回住宿休息。</div>
+              <label class="checkrow"><input type="checkbox" data-check="d4-sandhill"> 完成</label>
+            </div>
+          </div>
+
+          <div class="item no-photo">
+            <div class="time">17:30以后</div>
+            <div class="info">
+              <h4>Check-in + 晚饭 + 休息</h4>
+              <p>这天到这里就结束。Lion’s Lookout、Kawartha Dairy 全部挪到第二天，不再为了 checklist 继续赶。</p>
+              <label class="checkrow"><input type="checkbox" data-check="d4-rest"> 已入住 / 休息</label>
+            </div>
+          </div>
+
+        </div>
+        <div class="day-note">D4 的原则：<b>只安排两个正式项目——午饭 + Sandhill。</b> 如果 Toronto 出发堵车，整天也不会被打乱。</div>
+      </div>
+    </article>
+
+
+    <!-- D5 -->
+    
+    <article class="panel day" id="d5">
+      <div class="day-header">
+        <div class="day-num">D5</div>
+        <div><h3>10/3 周六｜Huntsville 红叶慢游</h3><p>今天没有硬性长途：看红叶、小镇、湖边、冰淇淋，哪儿漂亮就多待一会儿。</p></div>
+        <div class="drive-badge">🚗 当地短途为主</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+
+          <div class="item">
+            <div class="time">09:00–10:00</div>
+            <div class="photo">
+              <img src="https://images.squarespace-cdn.com/content/v1/66fab472298236604e0b542b/be616013-2de8-4b3d-b4ef-5616436cd6c9/Lions-Lookout.jpg" alt="Lion's Lookout Huntsville">
+              <span class="photo-credit">Lion’s Lookout</span>
+            </div>
+            <div class="info">
+              <h4>Lion’s Lookout 🍁</h4>
+              <p>放到早上去，通常比下午和周末中段更轻松。看 Fairy Lake、Huntsville 和整片树林，主要是拍照，不需要久留。</p>
+              <div class="actions">
+                <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=Lions+Lookout+Huntsville+Ontario" target="_blank">📍 Google Maps</a>
+              </div>
+              <label class="checkrow"><input type="checkbox" data-check="d5-lion"> 完成</label>
+            </div>
+          </div>
+
+          <div class="transfer">
+            <div class="spacer"></div>
+            <div class="transfer-box">
+              <span>🚗 <strong>Lion’s Lookout → Downtown Huntsville：建议开车，约 5–10 分钟</strong></span>
+              <button class="live-route" onclick="openNamedLeg('Lions Lookout Huntsville Ontario','Downtown Huntsville Ontario','driving')">Google Maps 当前路况</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="time">10:15–11:45</div>
+            <div class="photo">
+              <img src="https://welcomehere.ca/static/huntsville-muskoka.jpg" alt="Downtown Huntsville autumn">
+              <span class="photo-credit">Downtown Huntsville</span>
+            </div>
+            <div class="info">
+              <h4>Downtown Huntsville + Muskoka River</h4>
+              <p>Main Street、小店、河边慢慢逛。今天不设“必须几点离开”，只要中午前后找地方吃饭就行。</p>
+              <div class="actions">
+                <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=Downtown+Huntsville+Ontario" target="_blank">📍 Google Maps</a>
+              </div>
+              <label class="checkrow"><input type="checkbox" data-check="d5-dt"> 完成</label>
+            </div>
+          </div>
+
+          <div class="item no-photo">
+            <div class="time">12:00–13:30</div>
+            <div class="info">
+              <h4>午饭 + 咖啡时间</h4>
+              <p>今天故意留一个空档，不提前锁死餐厅。看到喜欢的店就进去，行程不用围着“下一个景点”跑。</p>
+              <label class="checkrow"><input type="checkbox" data-check="d5-lunch"> 吃饱休息好</label>
+            </div>
+          </div>
+
+          <div class="transfer">
+            <div class="spacer"></div>
+            <div class="transfer-box">
+              <span>🚗 <strong>Downtown → Hunters Bay Trail / Fairy Lake：通常约 5–15 分钟</strong></span>
+              <button class="live-route" onclick="openNamedLeg('Downtown Huntsville Ontario','Hunters Bay Trail Huntsville Ontario','driving')">Google Maps 当前路况</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="time">13:30–15:00</div>
+            <div class="photo">
+              <img src="https://www.discovermuskoka.ca/wp-content/uploads/2024/04/TRAIL-0020-e1718121130293.jpg" alt="Hunters Bay Trail boardwalk">
+              <span class="photo-credit">Hunters Bay Trail</span>
+            </div>
+            <div class="info">
+              <h4>Hunters Bay Trail / Fairy Lake</h4>
+              <p>木栈道、水边、树林，非常适合你们“就是来看红叶、拍拍照”的需求，不需要做长距离徒步。</p>
+              <div class="actions">
+                <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=Hunters+Bay+Trail+Huntsville+Ontario" target="_blank">📍 Hunters Bay</a>
+                <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=Fairy+Lake+Huntsville+Ontario" target="_blank">📍 Fairy Lake</a>
+              </div>
+              <label class="checkrow"><input type="checkbox" data-check="d5-trail"> 完成</label>
+            </div>
+          </div>
+
+          <div class="transfer">
+            <div class="spacer"></div>
+            <div class="transfer-box">
+              <span>🚗 <strong>湖边 → Kawartha Dairy：建议开车，通常约 5–15 分钟</strong></span>
+              <button class="live-route" onclick="openNamedLeg('Fairy Lake Huntsville Ontario','Kawartha Dairy Huntsville Ontario','driving')">Google Maps 当前路况</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="time">15:15–16:00</div>
+            <div class="photo">
+              <img src="https://static.where-e.com/Canada/Kawartha-Dairy-Huntsville_891b85806d50fa98e8939044471c3fa4.jpg" alt="Kawartha Dairy Huntsville">
+              <span class="photo-credit">Kawartha Dairy</span>
+            </div>
+            <div class="info">
+              <h4>Kawartha Dairy 🍦</h4>
+              <p>把冰淇淋放在下午收尾。排队短就吃，排队长也不影响别的行程，因为后面已经没有必须赶到的项目。</p>
+              <div class="actions">
+                <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=Kawartha+Dairy+Huntsville+Ontario" target="_blank">📍 Google Maps</a>
+              </div>
+              <label class="checkrow"><input type="checkbox" data-check="d5-ice"> 完成</label>
+            </div>
+          </div>
+
+          <div class="item no-photo">
+            <div class="time">16:00以后</div>
+            <div class="info">
+              <h4>自由赏枫时间 🍁</h4>
+              <p>哪里颜色最好就回哪里。可以回湖边、继续逛小镇，也可以直接回住宿休息。Arrowhead 只作为“当天还想继续玩”的备选，不再是计划内项目。</p>
+              <div class="actions">
+                <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=Arrowhead+Provincial+Park+Ontario" target="_blank">↗ Arrowhead 备选</a>
+              </div>
+              <label class="checkrow"><input type="checkbox" data-check="d5-leaves"> 今天看到满意的红叶了 🍁</label>
+            </div>
+          </div>
+
+        </div>
+        <div class="day-note">D5 的原则：<b>红叶第一，景点第二。</b> 如果 Huntsville 已经很漂亮，就完全不需要为了“更大的公园”继续开远路。</div>
+      </div>
+    </article>
+
+
+    <!-- D6 -->
+    <article class="panel day" id="d6">
+      <div class="day-header">
+        <div class="day-num">D6</div>
+        <div><h3>10/4 周日｜Huntsville → YYZ → Vancouver</h3><p>最后一天只留给早餐、开车、还车和飞行。</p></div>
+        <div class="drive-badge">🚗 约 2.5–3 h*</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="item no-photo">
+            <div class="time">上午</div>
+            <div class="info">
+              <h4>慢早餐 → 退房</h4>
+              <p>如果航班在下午 4–5 点以后，这一天会非常舒服；如果航班更早，再按实际时间整体前移。</p>
+              <label class="checkrow"><input type="checkbox" data-check="d6-checkout"> 已退房</label>
+            </div>
+          </div>
+
+          <div class="transfer">
+            <div class="spacer"></div>
+            <div class="transfer-box">
+              <span>🚗 <strong>Huntsville 住宿 → YYZ：🚗 计划约 2小时30分–3小时；10/4 实际建议按 3–3.5 小时预留</strong></span>
+              <button class="live-route" onclick="openDynamicLeg('huntsville','yyz','driving')">Google Maps 当前路况</button>
+            </div>
+          </div>
+          <div class="item no-photo">
+            <div class="time">出发</div>
+            <div class="info">
+              <h4>Huntsville → Pearson Airport</h4>
+              <p>正常驾驶约 2小时30分–3小时，但为了 Toronto 周边堵车、加油和还车，行程上建议按 3–3.5 小时预留。</p>
+              <span class="plan-note">计划车程：约 2小时30分–3小时；实际预留 3–3.5 小时</span>
+              <div class="actions">
+                <button class="link-btn" onclick="openDynamicLeg('huntsville','yyz','driving')">🧭 导航到 YYZ</button>
+              </div>
+              <label class="checkrow"><input type="checkbox" data-check="d6-car"> 已加油 / 已还车</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="sources">
+    <div class="section-title">
+      <div><h2>出发前 3 件事</h2><p>把不确定性留到临近出发再确认，不要现在把行程锁死。</p></div>
+    </div>
+    <div class="lodging-grid">
+      <div class="panel lodging-card">
+        <h3>① 看红叶实时状态</h3>
+        <p class="zone-copy">10/1–10/2 再看 Muskoka Fall Colour Report。如果 Huntsville 已经很漂亮，10/3 完全不需要往更远的公园跑。</p>
+        <a class="btn" target="_blank" href="https://www.discovermuskoka.ca/ontario-fall-colour-report/">打开 Fall Colour Report</a>
+      </div>
+      <div class="panel lodging-card">
+        <h3>② Sandhill 周五白天免费</h3>
+        <p class="zone-copy">你们安排在 10/2 周五很合适；如果临时想看晚上的 Fall Forest of Light，再单独订票。</p>
+        <a class="btn" target="_blank" href="https://sandhillnursery.ca/fallfestival">Sandhill 2026 官网</a>
+      </div>
+      <div class="panel lodging-card">
+        <h3>③ Toronto 住宿不用追求核心 Downtown</h3>
+        <p class="zone-copy">4个成人 + 一辆车，更值得换取 2卧、免费停车和更大的客厅。City day 再坐 GO/TTC 进城即可。</p>
+      </div>
+      <div class="panel lodging-card">
+        <h3>④ 页面时间是计划值，Google Maps 按当天实时变化</h3>
+        <p class="zone-copy">页面里的分钟数按你们旅行当天的预计出发时间做计划估算。点击“Google Maps 当前路况”看到的是你打开网页此刻的路况——例如你在国内查看时，多伦多可能是凌晨，所以会比白天通勤时明显更快。真正出发当天再以 Google Maps 为准。若要让网页自动显示“10/1 早上8点的预测交通”，需要接 Google Maps Routes API 并使用 API key。</p>
+      </div>
+    </div>
+
+    <div class="panel lodging-card" style="margin-top:16px">
+      <h3>资料来源 / 备注</h3>
+      <div class="source-list">
+        <a target="_blank" href="https://sandhillnursery.ca/fallfestival">Sandhill Nursery Fall Festival 2026（官方）</a>
+        <a target="_blank" href="https://www.discovermuskoka.ca/ontario-fall-colour-report/">Discover Muskoka — 2026 Fall Colour Report</a>
+        <a target="_blank" href="https://www.discovermuskoka.ca/listings/lions-lookout-trail-259/">Discover Muskoka — Lion’s Lookout</a>
+        <a target="_blank" href="https://www.cntower.ca/plan-your-visit/tickets-and-hours/hours">CN Tower — Hours</a>
+        <a target="_blank" href="https://www.niagarafallstourism.com/plan/getting-here/">Niagara Falls Tourism — Getting Here</a>
+      </div>
+      <p class="tiny" style="margin-top:12px">页面中的活动照片用于行前视觉参考，版权归原作者/原网站；地图与营业时间请在出发前再次核对。页面需要联网才能加载外部照片和 Google Maps。</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    版本：2026-09-11 · 适用于 4 位成人 · Vancouver 往返 · Toronto 落地取车、YYZ 还车
+  </div>
+</footer>
+
+<script>
+  const defaults = {
+    yyz: "Toronto Pearson International Airport",
+    toronto: "Toronto, Ontario",
+    niagara: "Table Rock Welcome Centre, Niagara Falls, Ontario",
+    huntsville: "Downtown Huntsville, Ontario"
+  };
+
+  const baseInputs = {
+    toronto: document.getElementById("torontoBase"),
+    huntsville: document.getElementById("huntsvilleBase")
+  };
+
+  // restore saved addresses
+  Object.entries(baseInputs).forEach(([key, el]) => {
+    const v = localStorage.getItem("tripBase_" + key);
+    if (v) el.value = v;
+    el.addEventListener("input", () => localStorage.setItem("tripBase_" + key, el.value.trim()));
+  });
+
+  function place(key){
+    if (baseInputs[key] && baseInputs[key].value.trim()) return baseInputs[key].value.trim();
+    return defaults[key] || key;
+  }
+  function gmaps(origin, destination, waypoints, mode="driving"){
+    let url = "https://www.google.com/maps/dir/?api=1" +
+      "&origin=" + encodeURIComponent(origin) +
+      "&destination=" + encodeURIComponent(destination) +
+      "&travelmode=" + encodeURIComponent(mode);
+    if (waypoints && waypoints.length){
+      url += "&waypoints=" + encodeURIComponent(waypoints.join("|"));
+    }
+    window.open(url, "_blank", "noopener");
+  }
+  function resolvePlace(value){
+    return defaults[value] || (baseInputs[value] ? place(value) : value);
+  }
+  function openDynamicLeg(a,b,mode="driving"){
+    gmaps(resolvePlace(a), resolvePlace(b), null, mode);
+  }
+  function openNamedLeg(a,b,mode="driving"){
+    gmaps(a,b,null,mode);
+  }
+  function openMasterRoute(){
+    gmaps("Toronto Pearson International Airport",
+          "Toronto Pearson International Airport",
+          [place("toronto"), "Niagara Falls, Ontario", place("toronto"), place("huntsville")],
+          "driving");
+  }
+  function toggleOptional(btn){
+    const box = btn.parentElement.parentElement.querySelector(".optional");
+    box.classList.toggle("show");
+    btn.textContent = box.classList.contains("show") ? "－收起备选" : "＋看备选";
+  }
+
+  // zone recommendations
+  const zoneCopy = {
+    mimico: "我最优先看这里：湖边、新公寓较多，通常比核心 Downtown 更容易找到大一点的房子和停车位；去 Niagara 也顺。进市中心可开车，也可看住宿离 Mimico GO 是否方便。",
+    highpark: "更有本地生活感，也有地铁作为备选。适合不想住纯郊区、但又不想承受核心 Downtown 住宿和停车压力的方案。",
+    etobicoke: "通常空间和停车更友好，去 YYZ、Niagara 都方便；代价是去 Downtown 要多留一点时间。预算优先时最值得搜。"
+  };
+  document.querySelectorAll(".zone-btn").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      document.querySelectorAll(".zone-btn").forEach(b=>b.classList.remove("active"));
+      btn.classList.add("active");
+      document.getElementById("zoneCopy").textContent = zoneCopy[btn.dataset.zone];
+    });
+  });
+
+  // checklist persistence
+  document.querySelectorAll('input[type="checkbox"][data-check]').forEach(cb=>{
+    cb.checked = localStorage.getItem("tripCheck_" + cb.dataset.check) === "1";
+    cb.addEventListener("change", ()=>{
+      localStorage.setItem("tripCheck_" + cb.dataset.check, cb.checked ? "1" : "0");
+    });
+  });
+  function resetChecks(){
+    if(!confirm("要清空所有行程勾选吗？")) return;
+    document.querySelectorAll('input[type="checkbox"][data-check]').forEach(cb=>{
+      cb.checked = false;
+      localStorage.removeItem("tripCheck_" + cb.dataset.check);
+    });
+  }
+</script>
+</body>
+</html>
