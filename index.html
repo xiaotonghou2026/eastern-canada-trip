@@ -209,6 +209,9 @@
   .flight-time{font-size:26px;font-weight:900;letter-spacing:-.02em;color:var(--ink);line-height:1.1}
   .flight-meta{font-size:12px;color:var(--muted);line-height:1.5}
   .flight-meta b{color:var(--ink)}
+  .today-route{margin:0 0 16px;padding:14px 16px;border-radius:15px;background:#f4f0e8;border:1px solid var(--line);display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;font-size:13px;color:#5b6359}
+  .today-route b{color:var(--ink)}
+  .today-route .route-label{background:#e7eee5;color:#4e6253;border-radius:999px;padding:4px 9px;font-weight:800;white-space:nowrap}
   /* mini stats */
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 0}
   .stat{padding:16px;text-align:center}
@@ -354,8 +357,8 @@
         <div class="route-arrow"><span>→</span><span class="timepill">计划约 2.5–3 小时*</span><span>→</span></div>
         <div class="route-step">
           <span class="daytag">D4–D6</span>
-          <b>Huntsville</b>
-          <small>D4 南瓜节 · D5 红叶慢游</small>
+          <b>249 Crescent Bay Lane</b>
+          <small>Huntsville · D4–D6</small>
         </div>
         <div class="route-arrow"><span>→</span><span class="timepill">计划约 2.5–3 小时*</span><span>→</span></div>
         <div class="route-step">
@@ -390,13 +393,13 @@
       </div>
 
       <div class="panel lodging-card">
-        <h3>Huntsville｜10/2–10/4</h3>
-        <p class="zone-copy">不用追求住在“景区”。优先 Huntsville Downtown / Fairy Lake 周围，吃饭方便，去 Lion’s Lookout、Sandhill、Kawartha Dairy 都很近；第二天看红叶也更松弛。</p>
+        <h3>Huntsville｜10/2–10/4 · 已订</h3>
+        <p class="zone-copy"><b>249 Crescent Bay Lane, Huntsville, ON</b><br>湖边新公寓，作为 Huntsville 两晚的固定出发点和返回点。去 Downtown、Lion’s Lookout、Kawartha Dairy 都是本地短途。</p>
         <div class="field">
-          <label>订好后，把 Huntsville 住宿地址填这里</label>
-          <input id="huntsvilleBase" placeholder="Huntsville 住宿地址（待定）">
+          <label>Huntsville 住宿地址（导航按钮使用这里）</label>
+          <input id="huntsvilleBase" value="249 Crescent Bay Lane, Huntsville, ON, Canada">
         </div>
-        <p class="tiny">如果房子本身有湖景/树林景观，可以直接把 10/3 做成“睡醒看红叶”的度假日。</p>
+        <p class="tiny">10/2 到达后直接入住；10/3 所有活动从这里出发并回到这里；10/4 从这里直接开往 YYZ。</p>
       </div>
     </div>
   </section>
@@ -427,6 +430,7 @@
         <div class="drive-badge">✈ PD304 · 09:00–16:35 · 🚗 YYZ → 78 Ash 约 18–22 km · 20–30 min*</div>
       </div>
       <div class="day-body">
+        <div class="today-route"><span class="route-label">今日路线</span><span><b>YYZ → 78 Ash Crescent</b></span></div>
         <div class="timeline">
           <div class="item no-photo">
             <div class="time">抵达后</div>
@@ -464,6 +468,7 @@
         <div class="drive-badge">🚆 Long Branch GO → Union 约 22–24 min</div>
       </div>
       <div class="day-body">
+        <div class="today-route"><span class="route-label">今日路线</span><span><b>78 Ash Crescent → Long Branch GO → Union → Toronto 市区 → Union → Long Branch GO → 78 Ash Crescent</b></span></div>
         <div class="timeline">
           <div class="item">
             <div class="time">10:00</div>
@@ -543,6 +548,7 @@
         <div class="drive-badge">🚗 单程约 1.5–2 h*</div>
       </div>
       <div class="day-body">
+        <div class="today-route"><span class="route-label">今日路线</span><span><b>78 Ash Crescent → Niagara Falls →（可选 Niagara-on-the-Lake）→ 78 Ash Crescent</b></span></div>
         <div class="timeline">
           <div class="item no-photo">
             <div class="time">08:00</div>
@@ -644,6 +650,7 @@
         <div class="drive-badge">🚗 计划约 2.5–3 h*</div>
       </div>
       <div class="day-body">
+        <div class="today-route"><span class="route-label">今日路线</span><span><b>78 Ash Crescent → Portuguese House → Sandhill Nursery → 249 Crescent Bay Lane</b></span></div>
         <div class="timeline">
 
           <div class="item no-photo">
@@ -708,12 +715,19 @@
               <label class="checkrow"><input type="checkbox" data-check="d4-sandhill"> 完成</label>
             </div>
           </div>
+          <div class="transfer">
+            <div class="spacer"></div>
+            <div class="transfer-box">
+              <span>🚗 <strong>Sandhill Nursery → 249 Crescent Bay Lane：约 18–22 km · 约 20–25 分钟</strong></span>
+              <button class="live-route" onclick="openDynamicLeg('Sandhill Nursery, Huntsville, Ontario','huntsville','driving')">Google Maps 当前路况</button>
+            </div>
+          </div>
 
           <div class="item no-photo">
             <div class="time">17:30以后</div>
             <div class="info">
-              <h4>Check-in + 晚饭 + 休息</h4>
-              <p>这天到这里就结束。Lion’s Lookout、Kawartha Dairy 全部挪到第二天，不再为了 checklist 继续赶。</p>
+              <h4>Sandhill → 249 Crescent Bay Lane · Check-in</h4>
+              <p>Sandhill 结束后直接开去 249 Crescent Bay Lane 入住。Lion’s Lookout、Kawartha Dairy 全部留到第二天。</p>
               <label class="checkrow"><input type="checkbox" data-check="d4-rest"> 已入住 / 休息</label>
             </div>
           </div>
@@ -733,7 +747,16 @@
         <div class="drive-badge">🚗 当地短途为主</div>
       </div>
       <div class="day-body">
+        <div class="today-route"><span class="route-label">今日路线</span><span><b>249 Crescent Bay Lane → Lion’s Lookout → Downtown Huntsville → Hunters Bay / Fairy Lake → Kawartha Dairy → 249 Crescent Bay Lane</b></span></div>
         <div class="timeline">
+
+          <div class="transfer">
+            <div class="spacer"></div>
+            <div class="transfer-box">
+              <span>🚗 <strong>249 Crescent Bay Lane → Lion’s Lookout：约 5–7 km · 约 8–12 分钟</strong></span>
+              <button class="live-route" onclick="openDynamicLeg('huntsville','Lions Lookout Huntsville Ontario','driving')">Google Maps 当前路况</button>
+            </div>
+          </div>
 
           <div class="item">
             <div class="time">09:00–10:00</div>
@@ -787,7 +810,7 @@
           <div class="transfer">
             <div class="spacer"></div>
             <div class="transfer-box">
-              <span>🚗 <strong>Downtown → Hunters Bay Trail / Fairy Lake：约 3–6 km · 通常开车 5–15 分钟</strong></span>
+              <span>🚗 <strong>Downtown Huntsville → Hunters Bay Trail：约 3–4 km · 开车约 5–10 分钟</strong></span>
               <button class="live-route" onclick="openNamedLeg('Downtown Huntsville Ontario','Hunters Bay Trail Huntsville Ontario','driving')">Google Maps 当前路况</button>
             </div>
           </div>
@@ -812,7 +835,7 @@
           <div class="transfer">
             <div class="spacer"></div>
             <div class="transfer-box">
-              <span>🚗 <strong>湖边 → Kawartha Dairy：约 4–8 km · 建议开车 5–15 分钟</strong></span>
+              <span>🚗 <strong>Hunters Bay / Fairy Lake → Kawartha Dairy：约 5–7 km · 开车约 10–15 分钟</strong></span>
               <button class="live-route" onclick="openNamedLeg('Fairy Lake Huntsville Ontario','Kawartha Dairy Huntsville Ontario','driving')">Google Maps 当前路况</button>
             </div>
           </div>
@@ -832,12 +855,19 @@
               <label class="checkrow"><input type="checkbox" data-check="d5-ice"> 完成</label>
             </div>
           </div>
+          <div class="transfer">
+            <div class="spacer"></div>
+            <div class="transfer-box">
+              <span>🚗 <strong>Kawartha Dairy → 249 Crescent Bay Lane：约 3–5 km · 约 5–10 分钟</strong></span>
+              <button class="live-route" onclick="openDynamicLeg('Kawartha Dairy Huntsville Ontario','huntsville','driving')">Google Maps 当前路况</button>
+            </div>
+          </div>
 
           <div class="item no-photo">
             <div class="time">16:00以后</div>
             <div class="info">
-              <h4>自由赏枫时间 🍁</h4>
-              <p>哪里颜色最好就回哪里。可以回湖边、继续逛小镇，也可以直接回住宿休息。Arrowhead 只作为“当天还想继续玩”的备选，不再是计划内项目。</p>
+              <h4>自由赏枫 → 返回 249 Crescent Bay Lane 🍁</h4>
+              <p>Kawartha Dairy 后如果还有精神，就回湖边或小镇继续看红叶；不想再走就直接回 249 Crescent Bay Lane。Arrowhead 只保留为临时备选。</p>
               <div class="actions">
                 <a class="link-btn" href="https://www.google.com/maps/search/?api=1&query=Arrowhead+Provincial+Park+Ontario" target="_blank">↗ Arrowhead 备选</a>
               </div>
@@ -856,9 +886,10 @@
       <div class="day-header">
         <div class="day-num">D6</div>
         <div><h3>10/4 周日｜Huntsville → YYZ · PD309 → Vancouver</h3><p>下午还车后搭 PD309 回温哥华；最后一天不再安排景点。</p></div>
-        <div class="drive-badge">🚗 Huntsville → YYZ 约 2.5–3 h · ✈ PD309 17:30</div>
+        <div class="drive-badge">🚗 249 Crescent Bay Lane → YYZ 约 2.5–3 h · ✈ PD309 17:30</div>
       </div>
       <div class="day-body">
+        <div class="today-route"><span class="route-label">今日路线</span><span><b>249 Crescent Bay Lane → YYZ → PD309 → Vancouver</b></span></div>
         <div class="timeline">
           <div class="item no-photo">
             <div class="time">上午</div>
@@ -872,14 +903,14 @@
           <div class="transfer">
             <div class="spacer"></div>
             <div class="transfer-box">
-              <span>🚗 <strong>Huntsville 住宿 → YYZ：约 210–220 km · 🚗 计划 2小时30分–3小时；实际建议预留 3–3.5 小时</strong></span>
+              <span>🚗 <strong>249 Crescent Bay Lane → YYZ：约 212–220 km · 🚗 计划 2小时30分–3小时；实际建议预留 3–3.5 小时</strong></span>
               <button class="live-route" onclick="openDynamicLeg('huntsville','yyz','driving')">Google Maps 当前路况</button>
             </div>
           </div>
           <div class="item no-photo">
             <div class="time">出发</div>
             <div class="info">
-              <h4>Huntsville → YYZ → PD309 回 Vancouver</h4>
+              <h4>249 Crescent Bay Lane → YYZ → PD309 回 Vancouver</h4>
               <p>正常驾驶约 2小时30分–3小时，但为了 Toronto 周边堵车、加油、还车和机场手续，建议按 3–3.5 小时预留。PD309 当前公开时刻为 17:30 YYZ 起飞、19:39 YVR 抵达；最终以 Porter 订单 / App 为准。</p>
               <span class="plan-note">计划路程：约 210–220 km · 约 2小时30分–3小时；实际预留 3–3.5 小时</span>
               <div class="actions">
@@ -937,7 +968,7 @@
 
 <footer>
   <div class="wrap">
-    版本：2026-09-14 · 4位成人 · Toronto住宿：78 Ash Crescent · PD304 / PD309 · YYZ取还车
+    版本：2026-09-17 · 4位成人 · Toronto：78 Ash Crescent · Huntsville：249 Crescent Bay Lane · PD304 / PD309
   </div>
 </footer>
 
@@ -946,7 +977,7 @@
     yyz: "Toronto Pearson International Airport",
     toronto: "78 Ash Crescent, Etobicoke, ON M8W 1E6, Canada",
     niagara: "Table Rock Welcome Centre, Niagara Falls, Ontario",
-    huntsville: "Downtown Huntsville, Ontario"
+    huntsville: "249 Crescent Bay Lane, Huntsville, ON, Canada"
   };
 
   const baseInputs = {
@@ -959,6 +990,9 @@
     if (key === "toronto") {
       el.value = "78 Ash Crescent, Etobicoke, ON M8W 1E6, Canada";
       localStorage.setItem("tripBase_toronto", el.value);
+    } else if (key === "huntsville") {
+      el.value = "249 Crescent Bay Lane, Huntsville, ON, Canada";
+      localStorage.setItem("tripBase_huntsville", el.value);
     } else {
       const v = localStorage.getItem("tripBase_" + key);
       if (v) el.value = v;
